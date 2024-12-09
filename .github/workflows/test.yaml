@@ -1,0 +1,19 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v3
+      - name: Run Tests
+        run: ./gradlew test
